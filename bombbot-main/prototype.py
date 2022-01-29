@@ -31,7 +31,7 @@ def is_connected_metamask():
             print("Click sign wallet")
             time.sleep(0.5)
             pyautogui.click(x, y)
-            time.sleep(10)
+            time.sleep(15)
 
 print("Program bot for bormcrypto start")
 print("Open browser for program one by one")
@@ -53,9 +53,6 @@ while j < 999:
         print(x,y)
         pyautogui.click(x, y)
         print("Click green back button")
-    #find Hero function
-    time.sleep(1)
-    result_find_list_hero = pyautogui.locateOnScreen('images/list-hero.jpg', grayscale=True, confidence=0.7)
     # cature is loading when full connection
     while True:
         loading_img = pyautogui.locateOnScreen('images/loading.png', grayscale=True, confidence=0.7)
@@ -65,6 +62,9 @@ while j < 999:
         time.sleep(1)
     # is connected meta mask
     is_connected_metamask()
+    #find Hero function
+    time.sleep(1)
+    result_find_list_hero = pyautogui.locateOnScreen('images/list-hero.jpg', grayscale=True, confidence=0.7)
     print("Find button list hero. Please wait...")
     #  Find hero image 
     if result_find_list_hero is not None:
