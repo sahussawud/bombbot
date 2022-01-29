@@ -5,10 +5,14 @@
 import requests
 import pyautogui
 
+# Remember that './secret_key.txt' is encrypted until it's needed, and only read by a non-root user
+with open('./secret.txt') as f:
+    SECRET_KEY = f.read().strip() 
+
 def send_capture_screen():
     url = 'https://notify-api.line.me/api/notify'
     # change your token
-    token = '{your token}'
+    token = SECRET_KEY
     headers = {'Authorization':'Bearer '+token}
     capture_file = "capture.png"
     pyautogui.screenshot(capture_file)

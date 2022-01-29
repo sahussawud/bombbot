@@ -16,6 +16,22 @@ def is_loading():
     print('loading is appear...')
     return True
 
+def is_connected_metamask():
+    # connect meta mask wallet when it's expire something
+    result_connect_wallet_button = pyautogui.locateOnScreen('images/btn-connect-wallet.png', confidence=0.8)
+    if result_connect_wallet_button is not None:
+        x, y = pyautogui.center(result_connect_wallet_button)
+        print("Click connect wallet")
+        time.sleep(0.5)
+        pyautogui.click(x, y)
+        time.sleep(10)
+        result_sign_button = pyautogui.locateOnScreen('images/btn-sign.png', confidence=0.8)
+        if result_sign_button is not None:
+            x, y = pyautogui.center(result_sign_button)
+            print("Click sign wallet")
+            time.sleep(0.5)
+            pyautogui.click(x, y)
+            time.sleep(10)
 
 print("Program bot for bormcrypto start")
 print("Open browser for program one by one")
@@ -38,7 +54,6 @@ while j < 999:
         pyautogui.click(x, y)
         print("Click green back button")
     #find Hero function
-    print("Find button list hero. Please wait...")
     time.sleep(1)
     result_find_list_hero = pyautogui.locateOnScreen('images/list-hero.jpg', grayscale=True, confidence=0.7)
     # cature is loading when full connection
@@ -48,6 +63,9 @@ while j < 999:
             break
         print('loading is appear...')
         time.sleep(1)
+    # is connected meta mask
+    is_connected_metamask()
+    print("Find button list hero. Please wait...")
     #  Find hero image 
     if result_find_list_hero is not None:
         print("Find hero resting. Please wait...")
@@ -82,6 +100,7 @@ while j < 999:
         pyautogui.click(x, y)
         print("Find start button")
         time.sleep(1)
+        # find start button
         result_find_start_button = pyautogui.locateOnScreen('images/btn-start.jpg', confidence=0.8)
         if result_find_start_button is not None:
             x, y = pyautogui.center(result_find_start_button)
