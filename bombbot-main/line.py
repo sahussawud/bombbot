@@ -9,7 +9,7 @@ import pyautogui
 with open('./secret.txt') as f:
     SECRET_KEY = f.read().strip() 
 
-def send_capture_screen():
+def send_capture_screen(message='default message'):
     url = 'https://notify-api.line.me/api/notify'
     # change your token
     token = SECRET_KEY
@@ -18,6 +18,6 @@ def send_capture_screen():
     pyautogui.screenshot(capture_file)
     files = {'imageFile': open(capture_file, 'rb')}
     print(files)
-    r = requests.post(url, headers=headers , data = {'message': 'message'}, files=files)
+    r = requests.post(url, headers=headers , data = {'message': message}, files=files)
     print(r.content)
 
