@@ -39,6 +39,7 @@ def click_treasure_box(cature_screen=True):
         x, y = pyautogui.center(treasure_box_button)
         time.sleep(0.5)
         pyautogui.click(x, y)
+        time.sleep(1)
         line.send_capture_screen('thresure value') if cature_screen else 0
         time.sleep(1)
         click_close_button()
@@ -52,10 +53,10 @@ def time_with_click_refresh(cycle_time, refresh_min=10):
     round_ = cycle_time // refresh_min
     remainder = cycle_time % refresh_min
     print('round {} remainder {} ', (round_, remainder))
-    for _ in range(round_):
+    for j in range(round_):
+        print('accumulate sleep for ', 60*j*refresh_min, ' second')
         time.sleep(60*refresh_min)
-        click_treasure_box()
-
+    click_treasure_box()
     time.sleep(60*remainder)
 
 def click_back_button():
@@ -153,8 +154,9 @@ def main():
         click_start_button()
         print("Program ready running re process in (Min)",cycle_time)
         line.send_capture_screen('current screen')
-        time.sleep(60*cycle_time)
+        # time.sleep(60*cycle_time)
+        time_with_click_refresh(cycle_time)
 
 main()
-# time_with_click_refresh(30, 15)
+# time_with_click_refresh(2, 1)
 # click_treasure_box()
